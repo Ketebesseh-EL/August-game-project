@@ -181,18 +181,18 @@ MonoBehaviour:
   player: {fileID: 0}
   Ground:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
   Player:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 128
   walkPoint: {x: 0, y: 0, z: 0}
   walkPointRange: 5
   timeBetweenAttacks: 1
-  sightRange: 20
-  attackRange: 12
+  sightRange: 10
+  attackRange: 1
   playerInSightRange: 0
   playerInAttackRange: 0
-  showRange: 0
+  showRange: 1
   health: 100
 --- !u!1 &7358226473737676973
 GameObject:

@@ -1,4 +1,6 @@
 using System.Linq.Expressions;
+using Unity.VisualScripting.FullSerializer;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -21,6 +23,7 @@ public class EnemyMovement : MonoBehaviour
     public bool playerInSightRange, playerInAttackRange;
     public bool showRange;
     public float health;
+    
 
     private void Awake()
     {
@@ -28,6 +31,7 @@ public class EnemyMovement : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         if (sightRange < attackRange)
             Debug.LogError("Warning : sightRange < attackRange");
+
     }
 
 
@@ -42,7 +46,7 @@ public class EnemyMovement : MonoBehaviour
     private void Update()
     {
         playerInSightRange = Physics.CheckSphere(transform.position, sightRange, Player);
-        playerInAttackRange = Physics.CheckSphere(transform.position, sightRange, Player);
+        playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, Player);
 
         if (!playerInSightRange && !playerInAttackRange) Patrolling();
         if (playerInSightRange && !playerInAttackRange) ChasePlayer();
