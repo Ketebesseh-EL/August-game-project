@@ -1,58 +1,65 @@
-using Unity.VisualScripting;
+using System.Collections;
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.InputSystem;
-using UnityEngine.UIElements;
 
-public class Weapon : MonoBehaviour
-
+public abstract class Weapon : MonoBehaviour
 {
-
-    public UnityEvent OnWeaponShoot;
-    public bool Automatic;
-    public float FireCooldown;
-
-    public float CurrentCooldown;
-    
+    public WeaponData weaponData;
+    [HideInInspector] public int currentAmmo = 0;
+    private float nextTimeToFire = 0f;
     public InputActionReference fire;
+    public InputActionReference reload;
 
 
+    private bool isReloading = false;
 
     void Start()
     {
-        CurrentCooldown = FireCooldown;
         
+        currentAmmo = weaponData.magazineSize;
     }
 
+    public virtual void FixedUpdate(){}
 
-
-
-    void Update()
-    {   if (Automatic)
+    public void TryReload()
+    {
+        if (!isReloading && currentAmmo < weaponData.magazineSize)
         {
-            if (fire.action.IsPressed())
-            {
-                if (CurrentCooldown <= 0f)
-                {
-                    print("fire");
-                    OnWeaponShoot?.Invoke();
-                    CurrentCooldown = FireCooldown;
-                }
-            }
-            
+            StartCoroutine(Reload());
         }
-        else
-        {
-            if (fire.action.WasPressedThisFrame())
-            {
-                if (CurrentCooldown <= 0f)
-                {
-                    print("fire");
-                    OnWeaponShoot?.Invoke();
-                    CurrentCooldown = FireCooldown;
-                }
-            }    
-        }
-        CurrentCooldown -= Time.deltaTime;
     }
+
+    private IEnumerator Reload()
+    {
+        isReloading = true;
+        Debug.Log(weaponData.weaponName + "is reloading...");
+        yield return new WaitForSeconds(weaponData.reloadTime);
+
+        currentAmmo = weaponData.magazineSize;
+        isReloading = false;
+
+        Debug.Log(weaponData.weaponName + "is reloaded.");
+
+    }
+
+    public void TryShoot()
+    {
+        if (!isReloading && currentAmmo > 0 && Time.time >= nextTimeToFire)
+        {
+            nextTimeToFire = Time.time + (1 / weaponData.fireRate);
+            HandleShoot();
+        }
+
+    }
+
+    private void HandleShoot()
+    {
+        currentAmmo--;
+        Debug.Log(weaponData.weaponName + "Shooted a bullet.");
+        Shoot();
+    }
+
+    public abstract void Shoot();
+
+    
 }

@@ -9,13 +9,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3374539164899375598}
-  - component: {fileID: 8199081125828613602}
   - component: {fileID: 7919609637489387611}
   - component: {fileID: 6073331156582084908}
   - component: {fileID: 7097140653780071862}
   - component: {fileID: 1703916862181027538}
-  - component: {fileID: 5720724483915114924}
-  - component: {fileID: 3610468952199952697}
   m_Layer: 7
   m_Name: Player
   m_TagString: Untagged
@@ -41,31 +38,6 @@ Transform:
   - {fileID: 2769995561554242778}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!143 &8199081125828613602
-CharacterController:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1748708543279965416}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 0
-  serializedVersion: 3
-  m_Height: 2
-  m_Radius: 0.5
-  m_SlopeLimit: 45
-  m_StepOffset: 1.15
-  m_SkinWidth: 0.2
-  m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: -1, z: 0}
 --- !u!54 &7919609637489387611
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -153,52 +125,6 @@ MonoBehaviour:
   smoothSpeed: 720
   lockYOnly: 1
   smooth: 1
---- !u!114 &5720724483915114924
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1748708543279965416}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9bba22f8d75a7b14289cc9ea9281e6d1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  OnWeaponShoot:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 3610468952199952697}
-        m_TargetAssemblyTypeName: DamageWeapon, Assembly-CSharp
-        m_MethodName: Shoot
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  Automatic: 0
-  FireCooldown: 0.1
-  CurrentCooldown: 0
-  fire: {fileID: -9024992514203856457, guid: 259d326af49c7f64f9bc211edb66e988, type: 3}
---- !u!114 &3610468952199952697
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1748708543279965416}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ec114429e93a42a439412ef156aac816, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 20
-  Range: 10
-  Shooter: {fileID: 3374539164899375598}
 --- !u!1 &5155546519307295002
 GameObject:
   m_ObjectHideFlags: 0
@@ -211,6 +137,7 @@ GameObject:
   - component: {fileID: 2702827462909233698}
   - component: {fileID: 8195754037258893198}
   - component: {fileID: 1010230945664185673}
+  - component: {fileID: 9130915511204524760}
   m_Layer: 7
   m_Name: Cube
   m_TagString: Untagged
@@ -307,6 +234,23 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &9130915511204524760
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5155546519307295002}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a673ea21f76ca5d4bb2c04502861377f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponData: {fileID: 11400000, guid: 24919001997486245b833c3f50ccbd8e, type: 2}
+  shooter: {fileID: 2769995561554242778}
+  currentAmmo: 0
+  fire: {fileID: -9024992514203856457, guid: 259d326af49c7f64f9bc211edb66e988, type: 3}
+  reload: {fileID: -4776788910893958844, guid: 259d326af49c7f64f9bc211edb66e988, type: 3}
 --- !u!1 &5992916338917766334
 GameObject:
   m_ObjectHideFlags: 0
