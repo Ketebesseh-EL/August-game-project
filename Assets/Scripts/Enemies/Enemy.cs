@@ -1,13 +1,8 @@
-using System.Linq.Expressions;
-using Unity.VisualScripting.FullSerializer;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.AI;
 
-
-public class EnemyMovement : MonoBehaviour
+public class Enemy : MonoBehaviour
 {
-
     public NavMeshAgent agent;
     public Transform player;
     public LayerMask Ground, Player;
