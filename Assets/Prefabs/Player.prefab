@@ -9,11 +9,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3374539164899375598}
-  - component: {fileID: 8199081125828613602}
   - component: {fileID: 7919609637489387611}
   - component: {fileID: 6073331156582084908}
-  - component: {fileID: 7097140653780071862}
   - component: {fileID: 1703916862181027538}
+  - component: {fileID: 2267119565500827574}
   m_Layer: 7
   m_Name: Player
   m_TagString: Untagged
@@ -39,31 +38,6 @@ Transform:
   - {fileID: 2769995561554242778}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!143 &8199081125828613602
-CharacterController:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1748708543279965416}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 0
-  serializedVersion: 3
-  m_Height: 2
-  m_Radius: 0.5
-  m_SlopeLimit: 45
-  m_StepOffset: 1.15
-  m_SkinWidth: 0.2
-  m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: -1, z: 0}
 --- !u!54 &7919609637489387611
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -121,21 +95,6 @@ MonoBehaviour:
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
---- !u!114 &7097140653780071862
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1748708543279965416}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7e23dee146e6572428e37c3e480b9e80, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rigidBody: {fileID: 7919609637489387611}
-  moveSpeed: 10
-  move: {fileID: 7153118145191946029, guid: 259d326af49c7f64f9bc211edb66e988, type: 3}
 --- !u!114 &1703916862181027538
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -151,6 +110,30 @@ MonoBehaviour:
   smoothSpeed: 720
   lockYOnly: 1
   smooth: 1
+--- !u!114 &2267119565500827574
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1748708543279965416}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3496cea1fe53db943b42f2df3884b364, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rigidBody: {fileID: 7919609637489387611}
+  moveSpeed: 10
+  maxHealth: 100
+  currentHealth: 0
+  regenerationValue: 10
+  timeBeforeRegeneration: 5
+  regenerationSpeed: 1
+  regeneration: 1
+  isAlive: 1
+  move: {fileID: 7153118145191946029, guid: 259d326af49c7f64f9bc211edb66e988, type: 3}
+  fire: {fileID: -9024992514203856457, guid: 259d326af49c7f64f9bc211edb66e988, type: 3}
+  reload: {fileID: -4776788910893958844, guid: 259d326af49c7f64f9bc211edb66e988, type: 3}
 --- !u!1 &5155546519307295002
 GameObject:
   m_ObjectHideFlags: 0
@@ -163,6 +146,7 @@ GameObject:
   - component: {fileID: 2702827462909233698}
   - component: {fileID: 8195754037258893198}
   - component: {fileID: 1010230945664185673}
+  - component: {fileID: 9130915511204524760}
   m_Layer: 7
   m_Name: Cube
   m_TagString: Untagged
@@ -259,6 +243,32 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &9130915511204524760
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5155546519307295002}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a673ea21f76ca5d4bb2c04502861377f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rigidBody: {fileID: 0}
+  moveSpeed: 0
+  maxHealth: 0
+  currentHealth: 0
+  regenerationValue: 0
+  timeBeforeRegeneration: 0
+  regenerationSpeed: 0
+  regeneration: 0
+  isAlive: 1
+  move: {fileID: 0}
+  fire: {fileID: -9024992514203856457, guid: 259d326af49c7f64f9bc211edb66e988, type: 3}
+  reload: {fileID: -4776788910893958844, guid: 259d326af49c7f64f9bc211edb66e988, type: 3}
+  weaponData: {fileID: 11400000, guid: 24919001997486245b833c3f50ccbd8e, type: 2}
+  currentAmmo: 0
 --- !u!1 &5992916338917766334
 GameObject:
   m_ObjectHideFlags: 0

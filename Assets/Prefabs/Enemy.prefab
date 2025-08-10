@@ -11,8 +11,7 @@ GameObject:
   - component: {fileID: 1372967093684930971}
   - component: {fileID: 8689646418363520438}
   - component: {fileID: 5417617672596938430}
-  - component: {fileID: 1030787810245004375}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -87,27 +86,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!135 &1030787810245004375
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 350153091481109769}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &529407792337250762
 GameObject:
   m_ObjectHideFlags: 0
@@ -118,8 +96,9 @@ GameObject:
   m_Component:
   - component: {fileID: 482884749716703740}
   - component: {fileID: 6297372439640521281}
-  - component: {fileID: 7627437819561549862}
-  m_Layer: 0
+  - component: {fileID: -5830602353537407820}
+  - component: {fileID: 501534478432039225}
+  m_Layer: 8
   m_Name: Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -165,7 +144,28 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &7627437819561549862
+--- !u!135 &-5830602353537407820
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 529407792337250762}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &501534478432039225
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -174,11 +174,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 529407792337250762}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 111d1bf336b4b4044bd178deb1eb5855, type: 3}
+  m_Script: {fileID: 11500000, guid: c5fb0511e585ac845a375510ca7cff35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyData: {fileID: 11400000, guid: 3ea531b43bd71734cad91043b5c3faad, type: 2}
   agent: {fileID: 6297372439640521281}
-  player: {fileID: 0}
+  player: {fileID: 3374539164899375598, guid: f2453e875a85a10438202c9220ca85a3, type: 3}
   Ground:
     serializedVersion: 2
     m_Bits: 64
@@ -186,14 +187,9 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   walkPoint: {x: 0, y: 0, z: 0}
-  walkPointRange: 5
-  timeBetweenAttacks: 1
-  sightRange: 10
-  attackRange: 1
   playerInSightRange: 0
   playerInAttackRange: 0
-  showRange: 1
-  health: 100
+  showRange: 0
 --- !u!1 &7358226473737676973
 GameObject:
   m_ObjectHideFlags: 0
@@ -206,7 +202,7 @@ GameObject:
   - component: {fileID: 1143898955483165788}
   - component: {fileID: 8515582367750008816}
   - component: {fileID: 3886143524915521863}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: weapon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
