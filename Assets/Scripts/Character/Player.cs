@@ -7,8 +7,11 @@ public class Player : MonoBehaviour
     [Header("Player Movement")]
     public Rigidbody rigidBody;
 
-    public float moveSpeed;
+    public float maxSpeed;
+    public float acceleration;
+    public float deceleration;
     private Vector2 direction;
+    private Vector2 currentVelocity;
     public InputActionReference move;
     [Header("Player Health Gestion")]
     public float maxHealth;
@@ -23,13 +26,24 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        direction = move.action.ReadValue<Vector2>(); // Get player movement Inputs 
+        direction = move.action.ReadValue<Vector2>().normalized; // Get player movement Inputs 
     }
 
     private void FixedUpdate()
     {
+        //Player Movement System
+        Vector2 targetVelocity = direction * maxSpeed;
+        if (direction.magnitude > 0) //Acceleration
+        {
+            currentVelocity = Vector2.MoveTowards(currentVelocity, targetVelocity, acceleration * Time.fixedDeltaTime);
+        }
+        else // Deceleration
+        {
+            currentVelocity = Vector2.MoveTowards(currentVelocity, Vector2.zero, deceleration * Time.fixedDeltaTime);
+        }
+        rigidBody.linearVelocity = new Vector3(currentVelocity.x, 0, currentVelocity.y); // Player Movement
 
-        rigidBody.linearVelocity = new Vector3(direction.x * moveSpeed, 0, direction.y * moveSpeed); // Player Movement
+
         if (regeneration) tryToRegenerate(); 
 
 
