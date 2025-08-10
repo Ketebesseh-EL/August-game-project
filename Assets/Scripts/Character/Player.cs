@@ -11,8 +11,10 @@ public class Player : MonoBehaviour
     private Vector2 direction;
     public InputActionReference move;
     [Header("Player Combat Gestion")]
-    public float health;
-    public float regeneration;
+    public float maxHealth;
+    [HideInInspector] public float currentHealth;
+    public bool regeneration; // is regeneration allowed
+    public float regenerationValue;
     public float timeBeforeRegeneration;
     public float regenerationSpeed;
     private float nextTimeToRegen;
@@ -27,18 +29,20 @@ public class Player : MonoBehaviour
     {
 
         rigidBody.linearVelocity = new Vector3(direction.x * moveSpeed, 0, direction.y * moveSpeed);
+        if (regeneration) tryToRegenerate();
 
-        tryToRegenerate();
+        
     }
 
     private void Start()
     {
         nextTimeToRegen = timeBeforeRegeneration;
+        currentHealth = maxHealth;
     }
 
     private void CheckAlivenes()
     {
-        if (health <= 0.0f)
+        if (currentHealth <= 0.0f)
         {
             isAlive = false;
         }
@@ -49,16 +53,16 @@ public class Player : MonoBehaviour
     }
     private void tryToRegenerate()
     {
-        if (Time.time >= nextTimeToRegen)
+        if (currentHealth < maxHealth && Time.time >= nextTimeToRegen)
         {
-            health += regeneration;
+            currentHealth = Mathf.Min(currentHealth + regenerationValue, maxHealth);
             nextTimeToRegen = Time.time + (1 / regenerationSpeed);
         }
     }
 
     public void TakeDamage(float damage)
     {
-        health -= damage;
+        currentHealth -= damage;
         CheckAlivenes();
     }
 

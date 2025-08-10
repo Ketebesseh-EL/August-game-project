@@ -81,9 +81,9 @@ public class Enemy : MonoBehaviour
 
         if (!alreadyAttacked)
         {
-            CharacterHealthGestion playerHealth = player.GetComponent<CharacterHealthGestion>();
+            Player playerHealth = player.GetComponent<Player>();
             playerHealth.TakeDamage(damage);
-            Debug.Log("player health" + playerHealth.health);
+            Debug.Log("player health" + playerHealth.currentHealth);
             alreadyAttacked = true;
             Invoke(nameof(ResetAttack), timeBetweenAttacks);
         }
