@@ -17,6 +17,12 @@
         },
         {
             "m_Id": "c546a7c220be4e44bb2ac43dadce0d0b"
+        },
+        {
+            "m_Id": "3380806ed1194f6fb44cd98ad0c53517"
+        },
+        {
+            "m_Id": "d6ea63556fe042ef88404bb06c226d5a"
         }
     ],
     "m_Keywords": [],
@@ -721,6 +727,34 @@
         "y": 1.0
     },
     "m_Labels": []
+}
+
+{
+    "m_SGVersion": 1,
+    "m_Type": "UnityEditor.ShaderGraph.Internal.Vector1ShaderProperty",
+    "m_ObjectId": "3380806ed1194f6fb44cd98ad0c53517",
+    "m_Guid": {
+        "m_GuidSerialized": "31d09901-d7ee-439b-a293-94796bce4fad"
+    },
+    "m_Name": "Fresnel power",
+    "m_DefaultRefNameVersion": 1,
+    "m_RefNameGeneratedByDisplayName": "Fresnel power",
+    "m_DefaultReferenceName": "_Fresnel_power",
+    "m_OverrideReferenceName": "",
+    "m_GeneratePropertyBlock": true,
+    "m_UseCustomSlotLabel": false,
+    "m_CustomSlotLabel": "",
+    "m_DismissedVersion": 0,
+    "m_Precision": 0,
+    "overrideHLSLDeclaration": false,
+    "hlslDeclarationOverride": 0,
+    "m_Hidden": false,
+    "m_Value": 1.0,
+    "m_FloatType": 0,
+    "m_RangeValues": {
+        "x": 0.0,
+        "y": 1.0
+    }
 }
 
 {
@@ -1581,10 +1615,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -1239.0,
-            "y": -98.00001525878906,
+            "x": -1253.0,
+            "y": -183.0,
             "width": 130.0,
-            "height": 117.99998474121094
+            "height": 118.0
         }
     },
     "m_Slots": [
@@ -1923,8 +1957,8 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -1380.0,
-            "y": -14.0,
+            "x": -1425.0,
+            "y": -120.0,
             "width": 105.0,
             "height": 34.0
         }
@@ -1980,6 +2014,12 @@
         },
         {
             "m_Id": "c546a7c220be4e44bb2ac43dadce0d0b"
+        },
+        {
+            "m_Id": "3380806ed1194f6fb44cd98ad0c53517"
+        },
+        {
+            "m_Id": "d6ea63556fe042ef88404bb06c226d5a"
         }
     ]
 }
@@ -2386,6 +2426,34 @@
         "e31": 0.0,
         "e32": 0.0,
         "e33": 1.0
+    }
+}
+
+{
+    "m_SGVersion": 1,
+    "m_Type": "UnityEditor.ShaderGraph.Internal.Vector1ShaderProperty",
+    "m_ObjectId": "d6ea63556fe042ef88404bb06c226d5a",
+    "m_Guid": {
+        "m_GuidSerialized": "6782e8fd-929a-4738-99de-18596eeec7ac"
+    },
+    "m_Name": "Fresnel treshold",
+    "m_DefaultRefNameVersion": 1,
+    "m_RefNameGeneratedByDisplayName": "Fresnel treshold",
+    "m_DefaultReferenceName": "_Fresnel_treshold",
+    "m_OverrideReferenceName": "",
+    "m_GeneratePropertyBlock": true,
+    "m_UseCustomSlotLabel": false,
+    "m_CustomSlotLabel": "",
+    "m_DismissedVersion": 0,
+    "m_Precision": 0,
+    "overrideHLSLDeclaration": false,
+    "hlslDeclarationOverride": 0,
+    "m_Hidden": false,
+    "m_Value": 0.5,
+    "m_FloatType": 0,
+    "m_RangeValues": {
+        "x": 0.0,
+        "y": 1.0
     }
 }
 
