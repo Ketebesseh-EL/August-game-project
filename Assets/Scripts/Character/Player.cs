@@ -41,7 +41,7 @@ public class Player : MonoBehaviour
         {
             currentVelocity = Vector2.MoveTowards(currentVelocity, Vector2.zero, deceleration * Time.fixedDeltaTime);
         }
-        rigidBody.linearVelocity = new Vector3(currentVelocity.x, 0, currentVelocity.y); // Player Movement
+        rigidBody.linearVelocity = new Vector3(currentVelocity.x, rigidBody.linearVelocity.y, currentVelocity.y); // Player Movement
 
 
         if (regeneration) tryToRegenerate(); 
