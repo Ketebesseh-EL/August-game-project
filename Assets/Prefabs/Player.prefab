@@ -124,12 +124,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rigidBody: {fileID: 7919609637489387611}
   moveSpeed: 10
-  move: {fileID: 7153118145191946029, guid: 259d326af49c7f64f9bc211edb66e988, type: 3}
-  health: 100
-  regeneration: 5
+  maxHealth: 100
+  currentHealth: 0
+  regenerationValue: 10
   timeBeforeRegeneration: 5
   regenerationSpeed: 1
+  regeneration: 1
   isAlive: 1
+  move: {fileID: 7153118145191946029, guid: 259d326af49c7f64f9bc211edb66e988, type: 3}
+  fire: {fileID: -9024992514203856457, guid: 259d326af49c7f64f9bc211edb66e988, type: 3}
+  reload: {fileID: -4776788910893958844, guid: 259d326af49c7f64f9bc211edb66e988, type: 3}
 --- !u!1 &5155546519307295002
 GameObject:
   m_ObjectHideFlags: 0
@@ -251,10 +255,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a673ea21f76ca5d4bb2c04502861377f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponData: {fileID: 11400000, guid: 24919001997486245b833c3f50ccbd8e, type: 2}
-  currentAmmo: 0
+  rigidBody: {fileID: 0}
+  moveSpeed: 0
+  maxHealth: 0
+  currentHealth: 0
+  regenerationValue: 0
+  timeBeforeRegeneration: 0
+  regenerationSpeed: 0
+  regeneration: 0
+  isAlive: 1
+  move: {fileID: 0}
   fire: {fileID: -9024992514203856457, guid: 259d326af49c7f64f9bc211edb66e988, type: 3}
   reload: {fileID: -4776788910893958844, guid: 259d326af49c7f64f9bc211edb66e988, type: 3}
+  weaponData: {fileID: 11400000, guid: 24919001997486245b833c3f50ccbd8e, type: 2}
+  currentAmmo: 0
 --- !u!1 &5992916338917766334
 GameObject:
   m_ObjectHideFlags: 0

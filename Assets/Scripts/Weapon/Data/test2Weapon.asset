@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9bba22f8d75a7b14289cc9ea9281e6d1, type: 3}
-  m_Name: testWeapon
+  m_Name: test2Weapon
   m_EditorClassIdentifier: 
-  weaponName: Test Weapon
+  weaponName: 
   targetLayerMask:
     serializedVersion: 2
-    m_Bits: 256
-  Range: 378.1
-  fireRate: 4
-  reloadTime: 2
-  magazineSize: 2464
-  damage: 20
+    m_Bits: 0
+  Range: 0
+  fireRate: 0
+  reloadTime: 0
+  magazineSize: 0
+  damage: 0

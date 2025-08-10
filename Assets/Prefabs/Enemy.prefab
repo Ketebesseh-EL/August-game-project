@@ -96,8 +96,8 @@ GameObject:
   m_Component:
   - component: {fileID: 482884749716703740}
   - component: {fileID: 6297372439640521281}
-  - component: {fileID: 2267570175368161103}
   - component: {fileID: -5830602353537407820}
+  - component: {fileID: 501534478432039225}
   m_Layer: 8
   m_Name: Enemy
   m_TagString: Untagged
@@ -144,35 +144,6 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &2267570175368161103
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 529407792337250762}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 292b3d9610ed690408f07ab6d003c40a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  agent: {fileID: 6297372439640521281}
-  player: {fileID: 3374539164899375598, guid: f2453e875a85a10438202c9220ca85a3, type: 3}
-  Ground:
-    serializedVersion: 2
-    m_Bits: 64
-  Player:
-    serializedVersion: 2
-    m_Bits: 128
-  walkPoint: {x: 0, y: 0, z: 0}
-  walkPointRange: 5
-  timeBetweenAttacks: 1
-  sightRange: 10
-  attackRange: 1
-  playerInSightRange: 0
-  playerInAttackRange: 0
-  showRange: 0
-  health: 100
 --- !u!135 &-5830602353537407820
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -194,6 +165,31 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &501534478432039225
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 529407792337250762}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5fb0511e585ac845a375510ca7cff35, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyData: {fileID: 11400000, guid: 3ea531b43bd71734cad91043b5c3faad, type: 2}
+  agent: {fileID: 6297372439640521281}
+  player: {fileID: 3374539164899375598, guid: f2453e875a85a10438202c9220ca85a3, type: 3}
+  Ground:
+    serializedVersion: 2
+    m_Bits: 64
+  Player:
+    serializedVersion: 2
+    m_Bits: 128
+  walkPoint: {x: 0, y: 0, z: 0}
+  playerInSightRange: 0
+  playerInAttackRange: 0
+  showRange: 0
 --- !u!1 &7358226473737676973
 GameObject:
   m_ObjectHideFlags: 0

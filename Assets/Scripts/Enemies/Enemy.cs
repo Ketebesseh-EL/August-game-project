@@ -1,57 +1,38 @@
 using UnityEngine;
 using UnityEngine.AI;
 
-public class Enemy : MonoBehaviour
+public abstract class Enemy : MonoBehaviour
 {
+    public EnemyData enemyData;
     public NavMeshAgent agent;
     public Transform player;
     public LayerMask Ground, Player;
 
-    public Vector3 walkPoint;
+    [HideInInspector] public Vector3 walkPoint;
     private bool walkPointSet;
-    public float walkPointRange;
-
-    public float timeBetweenAttacks;
+    
     private bool alreadyAttacked;
-
-    public float sightRange, attackRange;
-    public bool playerInSightRange, playerInAttackRange;
+    [HideInInspector] public bool playerInSightRange, playerInAttackRange;
     public bool showRange;
-    public float health;
-    public float damage;
+
 
     private void Awake()
     {
         player = GameObject.Find("Player").transform;
         agent = GetComponent<NavMeshAgent>();
-        if (sightRange < attackRange)
+        if (enemyData.sightRange < enemyData.attackRange)
             Debug.LogError("Warning : sightRange < attackRange");
 
     }
 
+    public virtual void FixedUpdate(){}
+    
 
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    private void FixedUpdate()
-    {
-        playerInSightRange = Physics.CheckSphere(transform.position, sightRange, Player);
-        playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, Player);
-
-        if (!playerInSightRange && !playerInAttackRange) Patrolling();
-        if (playerInSightRange && !playerInAttackRange) ChasePlayer();
-        if (playerInSightRange && playerInAttackRange) AttackPlayer();
-    }
-
-    private void Patrolling()
+    public void Patrolling()
     {
         if (!walkPointSet) SearchWalkPoint();
         if (walkPointSet)
+            Rotate(walkPoint);
             agent.SetDestination(walkPoint);
         Vector3 distanceToWalkPoint = transform.position - walkPoint;
 
@@ -59,35 +40,43 @@ public class Enemy : MonoBehaviour
             walkPointSet = false;
 
     }
-
+    private void Rotate(Vector3 target)
+    {
+        Vector3 vec = target - transform.position;
+        float rotationSpeed = 2*Mathf.PI; // Rotation speed before going to next walk point
+        transform.rotation = Quaternion.LookRotation(Vector3.RotateTowards(transform.forward, vec, rotationSpeed * Time.deltaTime, 0.0f));
+    }
     private void SearchWalkPoint()
     {
-        float randomX = Random.Range(-walkPointRange, walkPointRange);
-        float randomZ = Random.Range(-walkPointRange, walkPointRange);
+        float randomX = Random.Range(-enemyData.walkPointRange, enemyData.walkPointRange);
+        float randomZ = Random.Range(-enemyData.walkPointRange, enemyData.walkPointRange);
         walkPoint = new Vector3(transform.position.x + randomX, transform.position.y, transform.position.z + randomZ);
 
         if (Physics.Raycast(walkPoint, -transform.up, 2f, Ground))
             walkPointSet = true;
     }
 
-    private void ChasePlayer()
+    public void ChasePlayer()
     {
         agent.SetDestination(player.position);
     }
-    private void AttackPlayer()
+    public void AttackPlayer()
     {
         agent.SetDestination(transform.position);
         transform.LookAt(player);
 
         if (!alreadyAttacked)
         {
-            Player playerHealth = player.GetComponent<Player>();
-            playerHealth.TakeDamage(damage);
-            Debug.Log("player health" + playerHealth.currentHealth);
+            
+            Attack();
             alreadyAttacked = true;
-            Invoke(nameof(ResetAttack), timeBetweenAttacks);
+            Invoke(nameof(ResetAttack), enemyData.timeBetweenAttacks);
         }
     }
+
+
+    public abstract void Attack();
+
 
     private void ResetAttack()
     {
@@ -96,12 +85,12 @@ public class Enemy : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
-        health -= damage;
-        if (health <= 0)
+        enemyData.health -= damage;
+        if (enemyData.health <= 0)
             Invoke(nameof(DestroyEnnemy), 0.5f);
     }
 
-    private void DestroyEnnemy()
+    public void DestroyEnnemy()
     {
         Destroy(gameObject);
     }
@@ -111,9 +100,9 @@ public class Enemy : MonoBehaviour
         if (showRange)
         {  
             Gizmos.color = Color.red;
-            Gizmos.DrawWireSphere(transform.position, attackRange);
+            Gizmos.DrawWireSphere(transform.position, enemyData.attackRange);
             Gizmos.color = Color.yellow;
-            Gizmos.DrawWireSphere(transform.position, sightRange);  
+            Gizmos.DrawWireSphere(transform.position, enemyData.sightRange);  
         }
     }
 }
