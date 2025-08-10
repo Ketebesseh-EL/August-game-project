@@ -18,7 +18,7 @@ public class Enemy : MonoBehaviour
     public bool playerInSightRange, playerInAttackRange;
     public bool showRange;
     public float health;
-    
+    public float damage;
 
     private void Awake()
     {
@@ -81,7 +81,9 @@ public class Enemy : MonoBehaviour
 
         if (!alreadyAttacked)
         {
-            // code attack here
+            CharacterHealthGestion playerHealth = player.GetComponent<CharacterHealthGestion>();
+            playerHealth.TakeDamage(damage);
+            Debug.Log("player health" + playerHealth.health);
             alreadyAttacked = true;
             Invoke(nameof(ResetAttack), timeBetweenAttacks);
         }

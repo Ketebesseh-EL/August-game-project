@@ -1,23 +1,41 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
-public class CharacterHealthGestion : MonoBehaviour
+
+public class Player : MonoBehaviour
 {
-    [Header("Stats")]
+    [Header("Player Movement")]
+    public Rigidbody rigidBody;
+
+    public float moveSpeed;
+    private Vector2 direction;
+    public InputActionReference move;
+    [Header("Player Combat Gestion")]
     public float health;
     public float regeneration;
     public float timeBeforeRegeneration;
     public float regenerationSpeed;
     private float nextTimeToRegen;
     [HideInInspector] public bool isAlive = true;
-    public void TakeDamage(float damage)
+
+    private void Update()
     {
-        health -= damage;
-        CheckAlivenes();
+        direction = move.action.ReadValue<Vector2>();
     }
+
+    private void FixedUpdate()
+    {
+
+        rigidBody.linearVelocity = new Vector3(direction.x * moveSpeed, 0, direction.y * moveSpeed);
+
+        tryToRegenerate();
+    }
+
     private void Start()
     {
         nextTimeToRegen = timeBeforeRegeneration;
     }
+
     private void CheckAlivenes()
     {
         if (health <= 0.0f)
@@ -38,9 +56,10 @@ public class CharacterHealthGestion : MonoBehaviour
         }
     }
 
-
-    private void FixedUpdate()
+    public void TakeDamage(float damage)
     {
-        tryToRegenerate();
+        health -= damage;
+        CheckAlivenes();
     }
+
 }
