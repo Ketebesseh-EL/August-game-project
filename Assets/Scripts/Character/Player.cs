@@ -23,6 +23,8 @@ public class Player : MonoBehaviour
     public BarGestion healthBar;
     private float nextTimeToRegen;
     [HideInInspector] public bool isAlive = true;
+    [Header("Player Menu")]
+    public InventoryObject inventory;
 
     private void Update()
     {
@@ -44,7 +46,7 @@ public class Player : MonoBehaviour
         rigidBody.linearVelocity = new Vector3(currentVelocity.x, rigidBody.linearVelocity.y, currentVelocity.y); // Player Movement
 
 
-        if (regeneration) tryToRegenerate(); 
+        if (regeneration) tryToRegenerate();
 
 
     }
@@ -84,4 +86,19 @@ public class Player : MonoBehaviour
         CheckAlivenes();
     }
 
+
+    public void OnTriggerEnter(Collider other)
+    {
+        var item = other.GetComponent<Item>();
+        if (item)
+        {
+            inventory.AddItem(item.itemData);
+            Destroy(other.gameObject);
+        }
+    }
+
+    private void OnApplicationQuit()
+    {
+        inventory.Container.Clear();
+    }
 }

@@ -9,9 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 06420f8608d6b7a408cff8bd913d1441, type: 3}
-  m_Name: testItem
+  m_Script: {fileID: 11500000, guid: 327a728a46d39f44aa39523eb57c27a4, type: 3}
+  m_Name: PlayerInventory
   m_EditorClassIdentifier: 
-  ItemName: Test Item
-  description: An item used for test purpose.
-  Icon: {fileID: 0}
+  Container: []

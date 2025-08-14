@@ -1,10 +1,25 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "ItemData", menuName = "Scriptable Objects/ItemData")]
+
+public enum ItemType
+{
+    Weapon,
+    Upgrade,
+    Default
+}
+
+
+[CreateAssetMenu(fileName = "new ItemData", menuName = "Inventory System/ItemData")]
 public class ItemData : ScriptableObject
 {
     public string ItemName;
-    [TextArea] public string description;
+    [TextArea(5, 20)] public string description;
+    public ItemType type;
     public Sprite Icon;
     
+    public void Awake()
+    {
+        
+        type = ItemType.Default;
+    }
 }
