@@ -16,10 +16,11 @@ public class ItemData : ScriptableObject
     [TextArea(5, 20)] public string description;
     public ItemType type;
     public Sprite Icon;
+    public GameObject prefab;
     
     public void Awake()
     {
-        
+
         type = ItemType.Default;
     }
 }
