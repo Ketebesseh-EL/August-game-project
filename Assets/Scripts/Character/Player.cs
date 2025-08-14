@@ -20,7 +20,7 @@ public class Player : MonoBehaviour
     public float timeBeforeRegeneration;
     public float regenerationSpeed;
     public bool regeneration; // is regeneration allowed
-
+    public BarGestion healthBar;
     private float nextTimeToRegen;
     [HideInInspector] public bool isAlive = true;
 
@@ -53,6 +53,7 @@ public class Player : MonoBehaviour
     {
         nextTimeToRegen = timeBeforeRegeneration;
         currentHealth = maxHealth;
+        healthBar.SetMax(maxHealth);
     }
 
     private void CheckAlivenes()
@@ -79,6 +80,7 @@ public class Player : MonoBehaviour
     {
         currentHealth -= damage;
         nextTimeToRegen = Time.time + timeBeforeRegeneration; // reset time before regenration is enabled
+        healthBar.SetValue(currentHealth);
         CheckAlivenes();
     }
 

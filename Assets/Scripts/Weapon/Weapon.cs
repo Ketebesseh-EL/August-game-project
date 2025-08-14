@@ -9,14 +9,15 @@ public abstract class Weapon : MonoBehaviour
     private float nextTimeToFire = 0f;
     public InputActionReference fire;
     public InputActionReference reload;
-
+    [SerializeField] private BarGestion magazineBar;
 
     private bool isReloading = false;
 
     void Start()
     {
-        
+
         currentAmmo = weaponData.magazineSize;
+        magazineBar.SetMax(weaponData.magazineSize);
     }
 
     public virtual void FixedUpdate(){}
@@ -36,6 +37,7 @@ public abstract class Weapon : MonoBehaviour
         yield return new WaitForSeconds(weaponData.reloadTime);
 
         currentAmmo = weaponData.magazineSize;
+        magazineBar.SetValue(weaponData.magazineSize);
         isReloading = false;
 
         Debug.Log(weaponData.weaponName + "is reloaded.");
@@ -49,12 +51,14 @@ public abstract class Weapon : MonoBehaviour
             nextTimeToFire = Time.time + (1 / weaponData.fireRate);
             HandleShoot();
         }
+        if (currentAmmo <= 0) TryReload();
 
     }
 
     private void HandleShoot()
     {
         currentAmmo--;
+        magazineBar.SetValue(currentAmmo);
         Debug.Log(weaponData.weaponName + "Shooted a bullet.");
         Shoot();
     }
