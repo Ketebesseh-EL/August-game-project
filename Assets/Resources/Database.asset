@@ -9,11 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 06420f8608d6b7a408cff8bd913d1441, type: 3}
-  m_Name: testItem
+  m_Script: {fileID: 11500000, guid: bfc0db3daa23f224f9cc75d896c6051f, type: 3}
+  m_Name: Database
   m_EditorClassIdentifier: 
-  ItemName: test item
-  description: An item used for test purpose.
-  type: 2
-  Icon: {fileID: 0}
-  prefab: {fileID: 4671404423758647315, guid: 8a1034d90bae3a54ea78e3a2c384db84, type: 3}
+  Items:
+  - {fileID: 11400000, guid: dd1ac161a1cdac84bb3b8d33f686ebae, type: 2}
+  - {fileID: 11400000, guid: 5e1e04ac91a257a4aafbf98a8b6c57e0, type: 2}

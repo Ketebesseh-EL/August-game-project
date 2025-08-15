@@ -10,10 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 06420f8608d6b7a408cff8bd913d1441, type: 3}
-  m_Name: testItem
+  m_Name: testItem2
   m_EditorClassIdentifier: 
-  ItemName: test item
-  description: An item used for test purpose.
+  ItemName: 'test Item the second '
+  Id: 1
+  description: Second test Item used for test purpose.
   type: 2
   Icon: {fileID: 0}
-  prefab: {fileID: 4671404423758647315, guid: 8a1034d90bae3a54ea78e3a2c384db84, type: 3}
+  prefab: {fileID: 0}

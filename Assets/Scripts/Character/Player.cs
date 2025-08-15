@@ -29,6 +29,9 @@ public class Player : MonoBehaviour
     private void Update()
     {
         direction = move.action.ReadValue<Vector2>().normalized; // Get player movement Inputs 
+
+
+        
     }
 
     private void FixedUpdate()
@@ -86,7 +89,10 @@ public class Player : MonoBehaviour
         CheckAlivenes();
     }
 
-
+    /// <summary>
+    /// Function used to pickup items.
+    /// </summary>
+    /// <param name="other"></param>
     public void OnTriggerEnter(Collider other)
     {
         var item = other.GetComponent<Item>();
@@ -97,6 +103,9 @@ public class Player : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Clear player inventory when the application is closed.
+    /// </summary>
     private void OnApplicationQuit()
     {
         inventory.Container.Clear();

@@ -13,10 +13,10 @@ public enum ItemType
 public class ItemData : ScriptableObject
 {
     public string ItemName;
+    public int Id;
     [TextArea(5, 20)] public string description;
     public ItemType type;
     public Sprite Icon;
-    public GameObject prefab;
     
     public void Awake()
     {
